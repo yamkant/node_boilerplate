@@ -1,0 +1,13 @@
+version: '3'
+services:
+  web:
+    build:
+      context: .
+    container_name: node
+    volumes:
+      - ./code:/code
+    command: bash -c "npm install && npm start"
+    env_file:
+      - .env
+    ports:
+      - "8088:8080"
