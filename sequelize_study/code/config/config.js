@@ -4,8 +4,14 @@ const development = {
     "database": process.env.DB_NAME,
     "host": process.env.DB_HOST,
     "dialect": process.env.DB_DIALECT,
-    "logging": (...msg) => console.log(msg),
+    // "logging": (...msg) => console.log(msg),
+    "logging": true,
     "timezone": '+9:00', // 한국시간으로 설정
+    // "pool": {
+    //   max: 5,
+    //   idle: 30000,
+    //   acquire: 60000,
+    // },
 }
 
 module.exports = { development }
