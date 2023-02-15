@@ -1,19 +1,28 @@
-import express from "express"
-import { Request, Response } from "express"
+import * as express from "express"
+import * as bodyParser from "body-parser"
+import { AppDataSource } from "./data-source"
+// import { Routes } from "./routes"
+import { Router } from "./routers"
 
-// create and setup express app
-const app = express()
-app.use(express.json())
+AppDataSource.initialize().then(async () => {
 
-const PORT = process.env.PORT;
-const HOST = process.env.HOST;
+    // create express app
+    const app = express();
+    const PORT = process.env.PORT || 3000;;
+    app.use(bodyParser.json())
 
-// register routes
-app.get("/", function (req: Request, res: Response) {
-  res.send('Hello World!');
-})
+    app.use('/', Router);
 
-// start express server
-app.listen(PORT, () => {
-  console.log(`Running on http://${HOST}:${PORT}`);
-});
+
+    // MIDDLEWARE
+    // 1. Body parser
+    // 2. Logger
+    // 3. Cookie Parser
+    // 4. Cors
+
+    // start express server
+    app.listen(process.env.PORT);
+
+    console.log(`Express server has started on port ${PORT}.`);
+
+}).catch(error => console.log(error))
