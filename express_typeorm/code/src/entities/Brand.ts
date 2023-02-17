@@ -1,6 +1,7 @@
-import { Entity, PrimaryGeneratedColumn, Column } from "typeorm"
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from "typeorm"
+import { Product } from './Product';
 
-@Entity()
+@Entity("brands")
 export class Brand {
 
     @PrimaryGeneratedColumn()
@@ -8,5 +9,4 @@ export class Brand {
 
     @Column()
     brand_name: string
-
 }
