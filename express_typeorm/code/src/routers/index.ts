@@ -1,6 +1,7 @@
 import * as express from "express"
 import { userRouter } from "./userRouter"
 import { productRouter } from "./productRouter"
+import { oauthRouter } from "./oauthRouter"
 
 export const Router = express.Router();
 
@@ -12,6 +13,7 @@ Router.use('/healthchecker', async (req, res) => {
 
 Router.use('/users', userRouter);
 Router.use('/products', productRouter);
+Router.use('/oauth', oauthRouter);
 
 // register express routes from defined application routes
 // Routes.forEach(route => {
